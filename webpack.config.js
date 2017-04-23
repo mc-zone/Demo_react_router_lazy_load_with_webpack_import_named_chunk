@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -7,7 +7,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './v4'),
     chunkFilename: '[name].chunk.js',
   },
   module:{
@@ -29,8 +29,9 @@ module.exports = {
     ]
   },
   plugins:[
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ]
+    new HtmlWebpackPlugin({
+      template: 'tpl.html'
+    })
+  ],
+  devtool:"eval-source-map"
 };

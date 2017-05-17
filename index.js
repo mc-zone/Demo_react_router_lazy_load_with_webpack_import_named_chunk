@@ -34,7 +34,11 @@ class Bundle extends Component {
 };
 
 const Home = () => (
-  <div>home</div>
+  <Bundle
+    load={() => import('./home' /* webpackChunkName: "home" */)}
+  > 
+    {(Home) => <Home/>}
+  </Bundle>
 );
 
 const Foo = () => (
